@@ -53,7 +53,7 @@ function setup(){
 //  yellow = var(60/3.6,99,99);
 //  red = var(0,99,99);
   boltColor = color(0,0,99);
-  skyColor = color(0,0,0);
+  skyColor = color(0,0,0, 20);
   background(skyColor);
 
   bolt = new lightningBolt(random(0,width),0,random(minBoltWidth,maxBoltWidth),0,minJumpLength,maxJumpLength,boltColor);
