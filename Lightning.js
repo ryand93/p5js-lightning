@@ -44,7 +44,6 @@ var meanDistance = 0;
 var thunderTimes = [];
 
 var currentBolts = [];
-var minConcurrentStrikes = 1
 var maxConcurrentStrikes = 2
 
 
@@ -64,7 +63,6 @@ function setup(){
   fill(0, 100);
   rect(0, 0, width, height);
 
-  currentBolts.push(new lightningBolt(random(0,width),0,random(minBoltWidth,maxBoltWidth),0,minJumpLength,maxJumpLength,boltColor))
   smooth();
 }
 
@@ -81,7 +79,7 @@ function draw(){
     lastStrike = millis();
     nextStrikeInNms = random(0,maxTimeBetweenStrikes);
     
-	for (i=0;i<random(minConcurrentStrikes,maxConcurrentStrikes ); i++){
+	for (i=0;i<random(0,maxConcurrentStrikes ); i++){
 		currentBolts.push(new lightningBolt(random(0,width),0,random(minBoltWidth,maxBoltWidth),0,minJumpLength,maxJumpLength,boltColor))
 	};
 	
@@ -90,6 +88,7 @@ function draw(){
 	};
     //if(playThunder)
     //  thunderTimes.add(bolt.getThunderTime());
+	smooth();
   }
   else{
     if(fadeStrikes){
