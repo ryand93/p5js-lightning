@@ -19,6 +19,9 @@ var fadeStrikes = true;
 var randomColors = false;
 var maxTimeBetweenStrikes = 3000;
 
+var minFadeIntervalMillis = 500;
+var maxFadeIntervalMillis = 1000;
+
 //var yellow = var(59,99,99);
 //var red = var(0,99,99);
 var boltColor;
@@ -40,10 +43,14 @@ var meanDistance = 0;
 //if the current time matches the time in this arraylist, it should fire!
 var thunderTimes = [];
 
+var currentBolts = [];
+var minConcurrentStrikes = 1
+var maxConcurrentStrikes = 6
+
 
 function setup(){
   colorMode(HSB,100);
-  smooth();
+  
   createCanvas(windowWidth, windowHeight);
   //minim = new Minim(this);
   //thunderSound = minim.loadSample("thunder.mp3");
@@ -54,9 +61,11 @@ function setup(){
 //  red = var(0,99,99);
   boltColor = color(0,0,99);
   skyColor = color(0,0,0, 20);
-  background(skyColor);
+  fill(0, 100);
+  rect(0, 0, width, height);
 
-  bolt = new lightningBolt(random(0,width),0,random(minBoltWidth,maxBoltWidth),0,minJumpLength,maxJumpLength,boltColor);
+  currentBolts.push(new lightningBolt(random(0,width),0,random(minBoltWidth,maxBoltWidth),0,minJumpLength,maxJumpLength,boltColor))
+  smooth();
 }
 
 function draw(){
@@ -72,8 +81,13 @@ function draw(){
     lastStrike = millis();
     nextStrikeInNms = random(0,maxTimeBetweenStrikes);
     
-    bolt = new lightningBolt(random(0,width),0,random(minBoltWidth,maxBoltWidth),0,minJumpLength,maxJumpLength,boltColor);
-    bolt.draw();
+	for (i=0;i<4; i++){
+		currentBolts.push(new lightningBolt(random(0,width),0,random(minBoltWidth,maxBoltWidth),0,minJumpLength,maxJumpLength,boltColor))
+	};
+	
+	for (i=0;i<currentBolts.length; i++){
+		currentBolts[i].draw();
+	};
     //if(playThunder)
     //  thunderTimes.add(bolt.getThunderTime());
   }

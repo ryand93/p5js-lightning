@@ -17,8 +17,8 @@ class lightningBolt{
   //  myColor;
   constructor( x0I,  y0I,  width0,  theta0,  jumpMin,  jumpMax,  inputColor){
 
-    this. lineWidth0 = width0;
-    this. lineWidth = width0;
+    this.lineWidth0 = width0;
+    this.lineWidth = width0;
     this.theta = theta0;
     this.x0 = x0I;
     this.y0 = y0I;
@@ -81,6 +81,8 @@ class lightningBolt{
         (new lightningBolt(this.x2, this.y2, this.lineWidth, newTheta, this.straightJumpMin, this.straightJumpMax,boltColor)).draw();
         //it draws the whole limb before continuing.
       }
+	  
+	  
     }
   }
 }
