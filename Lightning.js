@@ -45,7 +45,7 @@ var thunderTimes = [];
 
 var currentBolts = [];
 var minConcurrentStrikes = 1
-var maxConcurrentStrikes = 6
+var maxConcurrentStrikes = 2
 
 
 function setup(){
@@ -81,7 +81,7 @@ function draw(){
     lastStrike = millis();
     nextStrikeInNms = random(0,maxTimeBetweenStrikes);
     
-	for (i=0;i<4; i++){
+	for (i=0;i<random(minConcurrentStrikes,maxConcurrentStrikes ); i++){
 		currentBolts.push(new lightningBolt(random(0,width),0,random(minBoltWidth,maxBoltWidth),0,minJumpLength,maxJumpLength,boltColor))
 	};
 	
