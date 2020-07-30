@@ -15,7 +15,7 @@ var minJumpLength = 1;
 var maxJumpLength = 10;
 
 var stormMode = true;
-var fadeStrikes = true;
+var clearStrikes = true;
 var randomColors = false;
 var maxTimeBetweenStrikes = 3000;
 
@@ -44,11 +44,11 @@ var meanDistance = 0;
 var thunderTimes = [];
 
 var currentBolts = [];
-var maxConcurrentStrikes = 2
+var maxConcurrentStrikes = 5
 
 
 function setup(){
-  colorMode(HSB,100);
+  colorMode(RGB,100);
   
   createCanvas(windowWidth, windowHeight);
   //minim = new Minim(this);
@@ -58,8 +58,8 @@ function setup(){
   
 //  yellow = var(60/3.6,99,99);
 //  red = var(0,99,99);
-  boltColor = color(0,0,99);
-  skyColor = color(0,0,0, 20);
+  boltColor = color(255,255,255);
+  skyColor = color(0,0,0);
   fill(0, 100);
   rect(0, 0, width, height);
 
@@ -91,7 +91,7 @@ function draw(){
 	smooth();
   }
   else{
-    if(fadeStrikes){
+    if(clearStrikes){
       noStroke();
       fill(skyColor);
       rect(0,0,width,height);
@@ -120,7 +120,7 @@ function randomSign() //returns +1 or -1
 }
 
 function randomColor(){
-  return color(random(0,100),99,99);
+  return color(random(0,255),random(0,255),random(0,255));
 }
 
 function slightlyRandomColor( inputCol, length){

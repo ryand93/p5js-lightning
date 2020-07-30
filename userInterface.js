@@ -4,7 +4,7 @@ function keyTyped(){
     reset();
   }
   if(key=='f'){
-    fadeStrikes = !fadeStrikes;
+    clearStrikes = !clearStrikes;
   }
   if(key=='s'){
     //   println("toggle storm @"+lastStrike/1000);
